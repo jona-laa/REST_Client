@@ -1,0 +1,68 @@
+.row {
+  @include flex(row, wrap);
+}
+
+.col {
+  flex: 1;
+
+  @include maxWidth(900px) {
+    flex: 100%;
+  }
+}
+
+/*  Flex Rows */
+/* Double col */
+.duo {
+  .col-1,
+  .col-2 {
+    height: 100%;
+  }
+
+  .col-1 img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .col-2 {
+    @include flex();
+    justify-content: center;
+    padding: 30px;
+    @include maxWidth(900px) {
+      padding: 40px 30px;
+    }
+  }
+}
+
+/* Triple col */
+.trio {
+  text-align: center;
+
+  div {
+    padding: $padding-div;
+    width: 33%;
+
+    @include maxWidth(900px) {
+      width: 100%;
+    }
+
+    p {
+      max-width: 500px;
+      margin: 10px auto;
+    }
+  }
+}
+
+/* Background/Text Colors */
+.bg-light {
+  background: $bg-light;
+  color: $color-dark;
+}
+
+.bg-dark {
+  background-color: $bg-dark;
+  color: $color-light;
+}
+
+.section-padding {
+  padding: $padding-div;
+}

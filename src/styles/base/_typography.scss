@@ -1,0 +1,44 @@
+main a {
+  text-decoration: none;
+  color: $color-dark;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:visited {
+    color: $color-dark;
+  }
+}
+
+h1 {
+  font-size: $font-h1;
+  font-weight: 300;
+  line-height: 5.8rem;
+}
+
+h2 {
+  font-weight: 300;
+  line-height: 4.2rem;
+  font-size: $font-h2;
+}
+
+h3 {
+  font-size: $font-L;
+}
+
+p {
+  margin: 10px 0;
+  font-size: $font-M;
+}
+
+/* Small text above the section heading */
+.pre-header {
+  font-size: $font-S;
+}
+
+/* Section Header */
+.section-header {
+  padding: $padding-div;
+  text-align: center;
+}

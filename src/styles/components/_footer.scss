@@ -1,0 +1,26 @@
+/* Footer */
+footer {
+  @include flex();
+  justify-content: space-around;
+  min-height: 160px;
+  padding: $padding-div;
+  text-align: center;
+
+  a {
+    font-size: $font-M;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  small {
+    font-size: $font-XS;
+  }
+
+  /* Social media icons */
+  .social i {
+    color: $color-light;
+    margin: 5px;
+  }
+}

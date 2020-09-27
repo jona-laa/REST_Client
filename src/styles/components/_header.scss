@@ -1,0 +1,47 @@
+header {
+  @include flex(row);
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 125px;
+  padding: 0 30px;
+  transition: 0.5s ease-in;
+
+  @include maxWidth(900px) {
+    @include flex();
+    height: 120px;
+    padding: $padding-div;
+  }
+
+  @include maxWidth(812px) {
+    flex-direction: row;
+    height: 70px;
+  }
+
+  a {
+    font-size: $font-M;
+    margin: 0 5px;
+    text-decoration: none;
+
+    &:visited {
+      color: $color-light;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  /* Logo */
+  .logo {
+    font-weight: 200;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3.6rem;
+    letter-spacing: 10px;
+
+    .logo-font_small {
+      font-size: 2.6rem;
+    }
+  }
+}

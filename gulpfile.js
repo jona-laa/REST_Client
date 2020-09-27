@@ -95,10 +95,10 @@ const images = () => {
 }
 
 // Favicon Task
-// const favicon = () => {
-//   return src('src/favicon.ico')
-//     .pipe(dest(path.dist))
-// }
+const favicon = () => {
+  return src('src/favicon.ico')
+    .pipe(dest(path.dist))
+}
 
 // File watch - Reload browser on file changes
 const watcher = async () => {
@@ -120,7 +120,7 @@ const server = async () => {
 
 exports.default = series(
   cleanDist,
-  parallel(html, styles, js, images),
+  parallel(html, styles, js, images, favicon),
   server,
   watcher
 );
