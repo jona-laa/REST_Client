@@ -14,13 +14,15 @@
 
 <body>
   <header>
-    <h1 class="logo">
-      Moment 5 - DT173G
-    </h1>
-    <div class="social">
-      <a href="https://github.com/jona-laa/" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-      <a href="https://www.linkedin.com/in/jonathan-laasonen-974aa617a/" target="_blank"><i
-          class="fab fa-linkedin fa-2x"></i></a>
+    <div class="header-content">
+      <h1 class="logo">
+        Moment 5 - DT173G
+      </h1>
+      <div class="social">
+        <a href="https://github.com/jona-laa/" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+        <a href="https://www.linkedin.com/in/jonathan-laasonen-974aa617a/" target="_blank"><i
+            class="fab fa-linkedin fa-2x"></i></a>
+      </div>
     </div>
   </header>
 
@@ -36,7 +38,7 @@
       </div> <!-- courses-container end -->
 
       <!-- Total Credits -->
-      <div class="col-1 credits">
+      <div class="col-1 credits section-padding">
         <div class="section-header">
           <h2>Total Credits</h2>
         </div>
@@ -50,7 +52,7 @@
 
 
 
-    <section id="add-course">
+    <section id="add-course section-padding">
       <div class="col">
         <div class="col-2 bg-light">
           <div class="section-header">
@@ -60,29 +62,29 @@
             <div>
               <label for="code"></label>
               <input type="text" name="code" id="code"
-                placeholder="Enter Code                        (example: DT173G)">
+                placeholder="Enter Code                        (example: DT173G)" required>
             </div>
             <div>
               <label for="name"></label>
-              <input type="text" name="name" id="name" placeholder="Enter Name">
+              <input type="text" name="name" id="name" placeholder="Enter Name" required>
             </div>
             <div>
               <label for="progression"></label>
-              <input type="progression" name="progression" id="progression" placeholder="Enter Progression">
+              <input type="progression" name="progression" id="progression" placeholder="Enter Progression" required>
             </div>
             <div>
               <label for="link"></label>
-              <input type="text" name="link" id="link" placeholder="Enter link">
+              <input type="text" name="link" id="link" placeholder="Enter link" required>
             </div>
             <div>
               <label for="credits"></label>
-              <input type="number" name="credits" id="credits"
-                placeholder="Enter credits                       (example: 7.5)">
+              <input type="number" name="credits" id="credits" min="1" max="30"
+                placeholder="Enter credits                       (example: 7.5)" required>
             </div>
             <div>
               <label for="icon"></label>
               <input type="text" name="icon" id="icon"
-                placeholder="Font-Awesome icon            (example: fab fa-linkedin)">
+                placeholder="Font-Awesome icon            (example: fab fa-linkedin)" required>
             </div>
             <input type="submit" value="Send" id="submit" class="btn" onclick="addCourse(event)">
           </form>

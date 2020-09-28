@@ -1,11 +1,13 @@
-header {
+.header-content {
   @include flex(row);
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
   height: 125px;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1600px;
   padding: 0 30px;
   transition: 0.5s ease-in;
+  width: 100%;
 
   @include maxWidth(812px) {
     height: 70px;

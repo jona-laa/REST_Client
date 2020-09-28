@@ -2,4 +2,16 @@
   i {
     margin-bottom: 5px;
   }
+
+  p {
+    justify-content: space-between;
+    width: 250px;
+    // width: 100%;
+    @include flex(row);
+  }
+
+}
+
+span {
+  font-size: $font-S;
 }
