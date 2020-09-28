@@ -24,17 +24,57 @@
     </div>
   </header>
 
-  <section id="courses" class="section-padding bg-light">
+  <main>
+    <section id="courses" class="section-padding bg-light">
 
-    <div class="section-header">
-      <h2>Finished Courses</h2>
-    </div>
+      <div class="section-header">
+        <h2>Finished Courses</h2>
+      </div>
 
-    <div id="courses-container" class="row trio">
+      <div id="courses-container" class="row trio">
 
-    </div> <!-- flex-items end -->
+      </div> <!-- courses-container end -->
 
-  </section> <!-- Front-end end-->
+    </section> <!-- courses end-->
+
+    <section id="credits" class="section-padding">
+      <div id="credits-total"></div>
+    </section>
+
+    <section id="add-course" class="section-padding">
+      <div class="col-2 bg-light">
+        <h2>Add Course</h2>
+        <form class="contact-form">
+          <div>
+            <label for="code"></label>
+            <input type="text" name="code" id="code" placeholder="Enter Code">
+          </div>
+          <div>
+            <label for="name"></label>
+            <input type="text" name="name" id="name" placeholder="Enter Name">
+          </div>
+          <div>
+            <label for="progression"></label>
+            <input type="progression" name="progression" id="progression" placeholder="Enter Progression">
+          </div>
+          <div>
+            <label for="link"></label>
+            <input type="text" name="link" id="link" placeholder="Enter link">
+          </div>
+          <div>
+            <label for="credits"></label>
+            <input type="number" name="credits" id="credits" placeholder="Enter credits (example: 7.5)">
+          </div>
+          <div>
+            <label for="icon"></label>
+            <input type="text" name="icon" id="icon" placeholder="Font-Awesome icon (example: fab fa-linkedin)">
+          </div>
+          <input type="submit" value="Send" id="submit" class="btn" onclick="addCourse(event)">
+        </form>
+      </div>
+    </section>
+
+  </main>
 
   <footer class="bg-dark">
     <div class="social">

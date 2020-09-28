@@ -2,7 +2,6 @@ header {
   @include flex(row);
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 125px;
   padding: 0 30px;
@@ -15,8 +14,12 @@ header {
   }
 
   @include maxWidth(812px) {
-    flex-direction: row;
+    @include flex(row);
     height: 70px;
+  }
+
+  i {
+    color: $color-dark;
   }
 
   a {
@@ -38,10 +41,7 @@ header {
     font-weight: 200;
     font-family: 'Rajdhani', sans-serif;
     font-size: 3.6rem;
-    letter-spacing: 10px;
-
-    .logo-font_small {
-      font-size: 2.6rem;
-    }
+    letter-spacing: 7px;
+    text-shadow: 1px 0px 3px #fff;
   }
 }

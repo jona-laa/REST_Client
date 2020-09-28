@@ -1,0 +1,25 @@
+/* callback form */
+.contact-form {
+  width: 100%;
+  padding: 20px 0;
+
+  input {
+    width: 100%;
+    padding: 4px;
+    height: 40px;
+    border: #f5f5f5 1px solid;
+    margin: 1px 0;
+
+    &:focus {
+      outline-color: lighten($darkblue, 80%)
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+  }
+
+  #submit {
+    @include light-theme(false);
+  }
+}
