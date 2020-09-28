@@ -1,4 +1,4 @@
-// DOM Elements
+// Output Elements
 const
   coursesContainer = document.querySelector('#courses-container'),
   creditsTotal = document.querySelector('#credits-total_score');
@@ -11,6 +11,21 @@ const
   linkInput = document.querySelector('#link'),
   creditsInput = document.querySelector('#credits'),
   iconInput = document.querySelector('#icon');
+
+
+
+//
+const resetDOM = () => {
+  credits = 0;
+  coursesContainer.innerHTML = '';
+  codeInput.value = '';
+  nameInput.value = '';
+  progressionInput.value = '';
+  linkInput.value = '';
+  creditsInput.value = '';
+  iconInput.value = '';
+  getCourses()
+}
 
 
 
@@ -45,31 +60,28 @@ const createElement = (course) => {
 const addCourse = (e) => {
   e.preventDefault();
 
-  fetch('http://localhost:8080/DEMO_REST/api/courses', {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(
-      {
-        code: codeInput.value,
-        name: nameInput.value,
-        progression: progressionInput.value,
-        link: linkInput.value,
-        credits: creditsInput.value,
-        icon: iconInput.value
-      }
-    ),
-  })
+  fetch('http://localhost:8080/DEMO_REST/api/courses',
+    {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          code: codeInput.value,
+          name: nameInput.value,
+          progression: progressionInput.value,
+          link: linkInput.value,
+          credits: creditsInput.value,
+          icon: iconInput.value
+        }
+      ),
+    }
+  )
     .then(res => res.json())
+    .then(data => resetDOM())
     .catch(e => console.error(e))
-}
-
-
-
-const emptyElement = () => {
-  coursesContainer.innerHTML = '';
 }
 
 
