@@ -2,6 +2,15 @@
 const coursesContainer = document.querySelector('#courses-container')
 const creditsTotal = document.querySelector('#credits-total_score')
 
+// Form Input Value
+const codeInput = document.querySelector('#code'),
+  nameInput = document.querySelector('#name'),
+  progressionInput = document.querySelector('#progression'),
+  linkInput = document.querySelector('#link'),
+  creditsInput = document.querySelector('#credits'),
+  iconInput = document.querySelector('#icon');
+
+
 const getCourses = () => {
   fetch('http://localhost:8080/DEMO_REST/api/courses')
     .then(res => res.json())
@@ -24,13 +33,27 @@ const createElement = (course) => {
     </div>
   `;
   credits += parseFloat(course.credits)
-  creditsTotal.innerHTML = `${credits}HP`;
+  creditsTotal.innerHTML = `${credits} HP`;
 }
 
 const addCourse = (e) => {
   e.preventDefault();
-  fetch()
-  console.log('added')
+
+  // fetch(url, {
+  //   method: 'POST', // *GET, POST, PUT, DELETE, etc.
+  //   mode: 'cors', // no-cors, *cors, same-origin
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify()
+  // })
+
+  console.log(codeInput.value)
+  console.log(nameInput.value)
+  console.log(progressionInput.value)
+  console.log(linkInput.value)
+  console.log(creditsInput.value)
+  console.log(iconInput.value)
 }
 
 window.addEventListener("load", getCourses);

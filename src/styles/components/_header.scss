@@ -8,7 +8,6 @@ header {
   transition: 0.5s ease-in;
 
   @include maxWidth(812px) {
-    @include flex(row);
     height: 70px;
   }
 
@@ -21,7 +20,7 @@ header {
   }
 
   a {
-    font-size: $font-M;
+    font-size: $font-L;
     margin: 0 5px;
     text-decoration: none;
 
@@ -31,6 +30,14 @@ header {
 
     &:hover {
       opacity: 0.75;
+    }
+
+    @include maxWidth(550px) {
+      font-size: $font-M;
+    }
+
+     @include maxWidth(380px) {
+      font-size: $font-S;
     }
   }
 

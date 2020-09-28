@@ -42,6 +42,10 @@
     width: 33%;
 
     @include maxWidth(900px) {
+      width: 50%;
+    }
+
+    @include maxWidth(680px) {
       width: 100%;
     }
 
