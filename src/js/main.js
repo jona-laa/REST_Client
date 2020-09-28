@@ -38,15 +38,37 @@ const createElement = (course) => {
 
 const addCourse = (e) => {
   e.preventDefault();
+  console.log(JSON.stringify(
+    {
+      code: codeInput.value,
+      name: nameInput.value,
+      progression: progressionInput.value,
+      link: linkInput.value,
+      credits: creditsInput.value,
+      icon: iconInput.value
+    }
+  ))
 
-  // fetch(url, {
-  //   method: 'POST', // *GET, POST, PUT, DELETE, etc.
-  //   mode: 'cors', // no-cors, *cors, same-origin
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify()
-  // })
+  fetch('http://localhost:8080/DEMO_REST/api/courses', {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        code: codeInput.value,
+        name: nameInput.value,
+        progression: progressionInput.value,
+        link: linkInput.value,
+        credits: creditsInput.value,
+        icon: iconInput.value
+      }
+      ),
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(e => console.error(e))
 
   console.log(codeInput.value)
   console.log(nameInput.value)
