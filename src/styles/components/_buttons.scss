@@ -1,0 +1,40 @@
+/* Buttons */
+.btn {
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $font-M;
+  padding: 10px 30px;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+/* To Top Button */
+.btn-top {
+  @extend .btn;
+  background: #003458;
+  border: 0.5px solid #004577;
+  height: 45px;
+  padding: 0 1.2em;
+  position: fixed;
+  right: 10px;
+  transition: 0.5s ease-in;
+  width: 45px;
+
+  &:hover polyline {
+    stroke-width: 15;
+  }
+
+  .arrow {
+    height: 18px;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 18px;
+  }
+}

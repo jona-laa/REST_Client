@@ -7,15 +7,13 @@ header {
   padding: 0 30px;
   transition: 0.5s ease-in;
 
-  @include maxWidth(900px) {
-    @include flex();
-    height: 120px;
-    padding: $padding-div;
-  }
-
   @include maxWidth(812px) {
     @include flex(row);
     height: 70px;
+  }
+
+  @include maxWidth(380px) {
+    padding: 0 20px;
   }
 
   i {
@@ -43,5 +41,16 @@ header {
     font-size: 3.6rem;
     letter-spacing: 7px;
     text-shadow: 1px 0px 3px #fff;
+
+    @include maxWidth(550px) {
+      font-size: $font-XXL;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    @include maxWidth(380px) {
+      font-size: $font-XL;
+      letter-spacing: 1px;
+    }
   }
 }

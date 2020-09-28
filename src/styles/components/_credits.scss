@@ -1,6 +1,13 @@
-#credits {
-  #credits-total {
-    width: 50%;
-    float: right;
+.credits {
+
+  .credits-total {
+    @include flex();
+    align-items: center;
+    justify-content: center;
+  }
+
+  #credits-total_score {
+    display: block;
+    font-size: $font-XL;
   }
 }

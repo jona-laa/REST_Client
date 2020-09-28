@@ -1,6 +1,6 @@
 // DOM Elements
 const coursesContainer = document.querySelector('#courses-container')
-const creditsTotal = document.querySelector('#credits-total')
+const creditsTotal = document.querySelector('#credits-total_score')
 
 const getCourses = () => {
   fetch('http://localhost:8080/DEMO_REST/api/courses')
@@ -24,7 +24,7 @@ const createElement = (course) => {
     </div>
   `;
   credits += parseFloat(course.credits)
-  creditsTotal.innerHTML = credits;
+  creditsTotal.innerHTML = `${credits}HP`;
 }
 
 const addCourse = (e) => {
