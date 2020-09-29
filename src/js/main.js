@@ -42,13 +42,14 @@ let credits = 0;
 const createElement = (course) => {
   coursesContainer.innerHTML += `
     <div class="courses-container_course">
-      <i class="${course.icon} fa-4x"></i>
-      <a href="${course.link}" class="icon-link react" target="_blank">
+    <a href="${course.link}" class="icon-link react" target="_blank">
+        <i class="${course.icon || 'fas fa-university'} fa-4x"></i>
         <h3>${course.name}</h3>
       </a>
       <p><span>Code:</span><span>${course.code}</span></p>
       <p><span>Progression:</span><span>${course.progression}</span></p>
       <p><span>Credits:</span><span>${course.credits}</span></p>
+      <button class="btn delete" value=" x" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
     </div>
   `;
   credits += parseFloat(course.credits)
@@ -56,8 +57,8 @@ const createElement = (course) => {
 }
 
 
-
-const addCourse = (e) => {
+/* Make this POST/PUT with method variable */
+const addCourse = e => {
   e.preventDefault();
 
   fetch('http://localhost:8080/DEMO_REST/api/courses',
@@ -82,6 +83,22 @@ const addCourse = (e) => {
     .then(res => res.json())
     .then(data => resetDOM())
     .catch(e => console.error(e))
+}
+
+const deleteCourse = id => {
+  fetch(`http://localhost:8080/DEMO_REST/api/courses?id=${id}`,
+    {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }
+  )
+  .then(res => res.json())
+  .then(data => resetDOM())
+  .catch(e => console.error(e))
+
 }
 
 
