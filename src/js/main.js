@@ -10,8 +10,11 @@ const
   progressionInput = document.querySelector('#progression'),
   linkInput = document.querySelector('#link'),
   creditsInput = document.querySelector('#credits'),
-  iconInput = document.querySelector('#icon');
+  iconInput = document.querySelector('#icon'),
+  feedbackMessage = document.querySelector('#feedback-message');
 
+// Used for Total Credits Counter
+let credits = 0;
 
 
 //
@@ -33,12 +36,23 @@ const getCourses = () => {
   fetch('http://localhost:8080/DEMO_REST/api/courses')
     .then(res => res.json())
     .then(data => data.courses.forEach(course => createElement(course)))
-    .catch(e => console.log(e))
+    .catch(e => console.error(e))
 }
 
 
 
-let credits = 0;
+const userFeedback = (feedback) => {
+  feedbackMessage.textContent = feedback.message;
+  feedback.code == 201 | 200 ? feedbackMessage.style.backgroundColor = 'green' : feedbackMessage.style.backgroundColor = 'red';
+}
+
+// $('.confirm').click(function () {
+//   $('.success').fadeOut(300, function () {
+//   });
+// });
+
+
+
 const createElement = (course) => {
   coursesContainer.innerHTML += `
     <div class="courses-container_course">
@@ -56,6 +70,7 @@ const createElement = (course) => {
   credits += parseFloat(course.credits)
   creditsTotal.innerHTML = `${credits} HP`;
 }
+
 
 
 /* Make this POST/PUT with method variable */
@@ -82,9 +97,12 @@ const addCourse = e => {
     }
   )
     .then(res => res.json())
+    .then(feedback => userFeedback(feedback))
     .then(data => resetDOM())
     .catch(e => console.error(e))
 }
+
+
 
 const deleteCourse = id => {
   const confirm = window.confirm('Are you sure you want to delete course?');
@@ -98,9 +116,10 @@ const deleteCourse = id => {
       },
     }
   )
-  .then(res => res.json())
-  .then(data => resetDOM())
-  .catch(e => console.error(e)) : null;
+    .then(res => res.json())
+    .then(feedback => userFeedback(feedback))
+    .then(data => resetDOM())
+    .catch(e => console.error(e)) : null;
 
 }
 

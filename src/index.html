@@ -62,7 +62,7 @@
             <div>
               <label for="code"></label>
               <input type="text" name="code" id="code"
-                placeholder="Enter Code                        (example: DT173G)" required>
+                placeholder="Enter Code                 (e.g: DT173G)" required>
             </div>
             <div>
               <label for="name"></label>
@@ -79,13 +79,14 @@
             <div>
               <label for="credits"></label>
               <input type="number" name="credits" id="credits" min="1" max="30"
-                placeholder="Enter credits                       (example: 7.5)" required>
+                placeholder="Enter credits               (e.g: 7.5)" required>
             </div>
             <div>
               <label for="icon"></label>
               <input type="text" name="icon" id="icon"
-                placeholder="Font-Awesome icon            (example: fab fa-linkedin)" required>
+                placeholder="Font-Awesome icon    (e.g: fab fa-linkedin)" required>
             </div>
+            <div class="feedback"><span id="feedback-message"></span></div>
             <input type="submit" value="Send" id="submit" class="btn" onclick="addCourse(event)">
           </form>
         </div>
