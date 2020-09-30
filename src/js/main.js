@@ -49,7 +49,8 @@ const createElement = (course) => {
       <p><span>Code:</span><span>${course.code}</span></p>
       <p><span>Progression:</span><span>${course.progression}</span></p>
       <p><span>Credits:</span><span>${course.credits}</span></p>
-      <button class="btn delete" value=" x" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
+      <button class="btn delete" value="delete" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
+      <button class="btn update" value="update" onclick="console.log(${course.id})"><i class="fas fa-edit fa-1x"></i></button>
     </div>
   `;
   credits += parseFloat(course.credits)
