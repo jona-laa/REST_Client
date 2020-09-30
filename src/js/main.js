@@ -87,7 +87,9 @@ const addCourse = e => {
 }
 
 const deleteCourse = id => {
-  fetch(`http://localhost:8080/DEMO_REST/api/courses?id=${id}`,
+  const confirm = window.confirm('Are you sure you want to delete course?');
+
+  confirm == true ? fetch(`http://localhost:8080/DEMO_REST/api/courses?id=${id}`,
     {
       method: 'DELETE',
       mode: 'cors',
@@ -98,7 +100,7 @@ const deleteCourse = id => {
   )
   .then(res => res.json())
   .then(data => resetDOM())
-  .catch(e => console.error(e))
+  .catch(e => console.error(e)) : null;
 
 }
 

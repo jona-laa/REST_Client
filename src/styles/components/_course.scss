@@ -11,35 +11,36 @@
     @include flex(row);
   }
 
-  .delete, .update {
+  .delete,
+  .update {
     display: none;
   }
 
-  &:hover .delete, &:hover .update{
+  &:hover .delete,
+  &:hover .update {
     display: block;
     position: absolute;
     top: 20px;
-    right: 40px;
+    right: 20px;
     padding: 6px 7px 2px 7px;
     background-color: red;
     border: none;
     color: $color-light;
+    transition: 2s ease-in;
+
   }
 
-  &:hover .update{
+  &:hover .update {
     // display: block;
     // position: absolute;
     // top: 20px;
-    right: 70px;
+    right: 50px;
     padding: 6px 5px 2px 7px;
     background-color: rgb(0, 174, 255);
     // border: none;
     // color: $color-light;
   }
-
-
 }
-
 
 span {
   font-size: $font-S;
