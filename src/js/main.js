@@ -11,13 +11,14 @@ const
   linkInput = document.querySelector('#link'),
   creditsInput = document.querySelector('#credits'),
   iconInput = document.querySelector('#icon'),
-  feedbackMessage = document.querySelector('#feedback-message');
+  feedbackMessage = document.querySelector('#feedback-message'),
+  feedbackDiv = document.querySelector('.feedback');
 
 // Used for Total Credits Counter
 let credits = 0;
 
 
-//
+// Empty Input Fields
 const resetDOM = () => {
   credits = 0;
   coursesContainer.innerHTML = '';
@@ -41,15 +42,24 @@ const getCourses = () => {
 
 
 
-const userFeedback = (feedback) => {
-  feedbackMessage.textContent = feedback.message;
-  feedback.code == 201 | 200 ? feedbackMessage.style.backgroundColor = 'green' : feedbackMessage.style.backgroundColor = 'red';
-}
+// const hideFeedback = (e) => {
+//   // e.preventDefault();
 
-// $('.confirm').click(function () {
-//   $('.success').fadeOut(300, function () {
-//   });
-// });
+// }
+
+$('#confirm').click(function () {
+  $('.feedback').fadeOut(300, function () {
+  });
+});
+
+
+const userFeedback = (feedback) => {
+  $('.feedback').fadeIn(300, function () {
+  });
+  const status = feedback.code;
+  feedbackMessage.textContent = feedback.message;
+  status == 201 | status == 200 ? feedbackDiv.style.backgroundColor = 'green' : feedbackDiv.style.backgroundColor = 'red';
+}
 
 
 
@@ -97,7 +107,7 @@ const addCourse = e => {
     }
   )
     .then(res => res.json())
-    .then(feedback => userFeedback(feedback))
+    .then(json => userFeedback(json))
     .then(data => resetDOM())
     .catch(e => console.error(e))
 }

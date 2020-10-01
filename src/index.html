@@ -61,8 +61,7 @@
           <form class="contact-form">
             <div>
               <label for="code"></label>
-              <input type="text" name="code" id="code"
-                placeholder="Enter Code                 (e.g: DT173G)" required>
+              <input type="text" name="code" id="code" placeholder="Enter Code                 (e.g: DT173G)" required>
             </div>
             <div>
               <label for="name"></label>
@@ -83,10 +82,13 @@
             </div>
             <div>
               <label for="icon"></label>
-              <input type="text" name="icon" id="icon"
-                placeholder="Font-Awesome icon    (e.g: fab fa-linkedin)" required>
+              <input type="text" name="icon" id="icon" placeholder="Font-Awesome icon    (e.g: fab fa-linkedin)"
+                required>
             </div>
-            <div class="feedback"><span id="feedback-message"></span></div>
+            <div class="feedback">
+              <span id="feedback-message"></span>
+              <button class="btn" id="confirm" onclick="event.preventDefault()"><i class="far fa-check-circle fa-1x"></i></button>
+            </div>
             <input type="submit" value="Send" id="submit" class="btn" onclick="addCourse(event)">
           </form>
         </div>
@@ -106,6 +108,7 @@
     <small>&copy; 2020 Jona.Laa.Dev </small>
 
   </footer>
+  <script src="//code.jquery.com/jquery-latest.js"></script>
   <script src="./js/main.js"></script>
 </body>
 
