@@ -80,6 +80,16 @@ const fadeOutElement = (element, fadeMs, timeoutMs) => {
 }
 
 
+
+const toggleElement = (id, fadeMs) => {
+  $(`#delete-${id}`).toggle(fadeMs, function () {
+  });
+  $(`#update-${id}`).toggle(fadeMs, function () {
+  });
+}
+
+
+
 const createElement = (course) => {
   coursesContainer.innerHTML += `
     <div class="courses-container_course">
@@ -90,8 +100,9 @@ const createElement = (course) => {
       <p><span>Code:</span><span>${course.code}</span></p>
       <p><span>Progression:</span><span>${course.progression}</span></p>
       <p><span>Credits:</span><span>${course.credits}</span></p>
-      <button class="btn delete" value="delete" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
-      <button class="btn update" value="update" onclick="console.log(${course.id})"><i class="fas fa-edit fa-1x"></i></button>
+      <button class="btn delete" id="delete-${course.id}" value="delete" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
+      <button class="btn update" id="update-${course.id}" value="update" onclick="console.log(${course.id})"><i class="fas fa-edit fa-1x"></i></button>
+      <button class="btn edit" value="update" onclick="toggleElement(${course.id}, 0)"><i class="fas fa-ellipsis-v fa-1x"></i></button>
     </div>
   `;
   credits += parseFloat(course.credits)
