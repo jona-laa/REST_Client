@@ -24,6 +24,7 @@ const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
 
 // Empty Input Fields
 const resetDOM = () => {
+  updateId = null;
   credits = 0;
   coursesContainer.innerHTML = '';
   codeInput.value = '';
@@ -92,8 +93,8 @@ const toggleElement = (id, fadeMs) => {
 
 const createElement = (course) => {
   coursesContainer.innerHTML += `
-    <div class="courses-container_course">
-    <a href="${course.link}" class="icon-link react" target="_blank">
+    <div class="courses-container_course" id="course-${course.id}">
+      <a href="${course.link}" class="icon-link react" target="_blank">
         <i class="${course.icon || 'fas fa-university'} fa-4x"></i>
         <h3>${course.name}</h3>
       </a>
@@ -101,8 +102,8 @@ const createElement = (course) => {
       <p><span>Progression:</span><span>${course.progression}</span></p>
       <p><span>Credits:</span><span>${course.credits}</span></p>
       <button class="btn delete" id="delete-${course.id}" value="delete" onclick="deleteCourse(${course.id})"><i class="fas fa-trash-alt fa-1x"></i></button>
-      <button class="btn update" id="update-${course.id}" value="update" onclick="console.log(${course.id})"><i class="fas fa-edit fa-1x"></i></button>
-      <button class="btn edit" value="update" onclick="toggleElement(${course.id}, 0)"><i class="fas fa-ellipsis-v fa-1x"></i></button>
+      <button class="btn update" id="update-${course.id}" value="update" onclick="initUpdate(${course.id})"><i class="fas fa-edit fa-1x"></i></button>
+      <button class="btn edit" value="update" onclick="toggleElement(${course.id}, 50)"><i class="fas fa-ellipsis-v fa-1x"></i></button>
     </div>
   `;
   credits += parseFloat(course.credits)
@@ -111,11 +112,66 @@ const createElement = (course) => {
 
 
 
-/* Make this POST/PUT with method variable */
-const addCourse = e => {
-  e.preventDefault();
+let updateId;
+const initUpdate = (id) => {
+  updateId = id;
 
-  fetch('http://localhost:8080/DEMO_REST/api/courses',
+  fetch(`${coursesUrl}?id=${id}`)
+    .then(res => res.json())
+    .then(data => {
+      let { id, code, name, progression, link, credits, icon } = data.courses[0];
+      console.log(id)
+      codeInput.value = code;
+      nameInput.value = name;
+      progressionInput.value = progression;
+      linkInput.value = link;
+      creditsInput.value = credits;
+      iconInput.value = icon;
+      window.scrollTo(0, document.body.scrollHeight);
+    })
+}
+
+const updateOrAdd = (e, id) => {
+  e.preventDefault()
+  console.log(id)
+  id ? updateCourse(id) : addCourse();
+}
+
+const updateCourse = (id) => {
+  console.log('update', id)
+  fetch(coursesUrl,
+    {
+      method: 'PUT',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          id: id,
+          code: codeInput.value,
+          name: nameInput.value,
+          progression: progressionInput.value,
+          link: linkInput.value,
+          credits: creditsInput.value,
+          icon: iconInput.value
+        }
+      ),
+    }
+  )
+    .then(res => res.json())
+    .then(json => userFeedback(json))
+    .then(data => resetDOM())
+    .catch(e => console.error(e))
+}
+
+
+
+const addCourse = (e) => {
+  // e.preventDefault();
+  console.log('add')
+
+  fetch(coursesUrl,
     {
       method: 'POST',
       mode: 'cors',
@@ -145,7 +201,7 @@ const addCourse = e => {
 const deleteCourse = id => {
   const confirm = window.confirm('Are you sure you want to delete course?');
 
-  confirm == true ? fetch(`http://localhost:8080/DEMO_REST/api/courses?id=${id}`,
+  confirm == true ? fetch(`${coursesUrl}?id=${id}`,
     {
       method: 'DELETE',
       mode: 'cors',
@@ -158,7 +214,8 @@ const deleteCourse = id => {
     .then(feedback => userFeedback(feedback))
     .then(data => resetDOM())
     .catch(e => console.error(e)) : null;
-
 }
+
+
 
 window.addEventListener("load", getCourses(coursesUrl));
