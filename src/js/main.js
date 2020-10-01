@@ -17,6 +17,10 @@ const
 // Used for Total Credits Counter
 let credits = 0;
 
+// Courses URL
+const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
+
+
 
 // Empty Input Fields
 const resetDOM = () => {
@@ -28,13 +32,14 @@ const resetDOM = () => {
   linkInput.value = '';
   creditsInput.value = '';
   iconInput.value = '';
-  getCourses()
+  getCourses(coursesUrl);
 }
 
 
 
-const getCourses = () => {
-  fetch('http://localhost:8080/DEMO_REST/api/courses')
+// Fetch Courses
+const getCourses = (url) => {
+  fetch(url)
     .then(res => res.json())
     .then(data => data.courses.forEach(course => createElement(course)))
     .catch(e => console.error(e))
@@ -42,25 +47,37 @@ const getCourses = () => {
 
 
 
-// const hideFeedback = (e) => {
-//   // e.preventDefault();
+// Show User Feedback
+const userFeedback = (feedback) => {
+  fadeInElement('.feedback', 500);
 
-// }
+  const status = feedback.code;
+  feedbackMessage.textContent = feedback.message;
+  status == 201 | status == 200 ? feedbackDiv.style.backgroundColor = 'green' : feedbackDiv.style.backgroundColor = 'red';
 
-$('#confirm').click(function () {
+  fadeOutElement('.feedback', 1000, 4000);
+}
+// Hide Feedback onclick
+$('.feedback').click(function () {
   $('.feedback').fadeOut(300, function () {
   });
 });
 
 
-const userFeedback = (feedback) => {
-  $('.feedback').fadeIn(300, function () {
+
+const fadeInElement = (element, fadeMs) => {
+  $(element).fadeIn(fadeMs, function () {
   });
-  const status = feedback.code;
-  feedbackMessage.textContent = feedback.message;
-  status == 201 | status == 200 ? feedbackDiv.style.backgroundColor = 'green' : feedbackDiv.style.backgroundColor = 'red';
 }
 
+
+
+const fadeOutElement = (element, fadeMs, timeoutMs) => {
+  setTimeout(() => {
+    $(element).fadeOut(fadeMs, function () {
+    })
+  }, timeoutMs);
+}
 
 
 const createElement = (course) => {
@@ -133,6 +150,4 @@ const deleteCourse = id => {
 
 }
 
-
-
-window.addEventListener("load", getCourses);
+window.addEventListener("load", getCourses(coursesUrl));
