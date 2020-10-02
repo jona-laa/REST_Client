@@ -6,3 +6,11 @@
 * **Add Course**
   * Submit form on the bottom of the page. 
   * Font-Awesome Icon has a default value, but custom one can be found at [Font Awesome](https://fontawesome.com/icons?d=gallery)
+
+* **Delete Course**
+  * Press the "options" icon (three vertical dots), and click on the trash can icon. Confirm.
+
+* **Update Course**
+  * Press the "options" icon (three vertical dots), and click on the edit icon. Confirm.
+
+<!-- Live webbapp can be found at [DT173G - Moment 5]() -->
