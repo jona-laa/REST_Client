@@ -88,7 +88,10 @@
             <div class="feedback">
               <span id="feedback-message"></span>
             </div>
-            <input type="submit" value="Send" id="submit" class="btn" onclick="updateOrAdd(event, updateId)">
+            <div class="contact-form_buttons">
+              <input type="submit" value="Cancel" id="submit" class="btn" onclick="cancelUpdate(event)">
+              <input type="submit" value="Send" id="submit" class="btn" onclick="updateOrAdd(event, updateId)">
+            </div>
           </form>
         </div>
       </div> <!-- col end -->

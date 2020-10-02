@@ -23,17 +23,17 @@ const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
 
 
 // Empty Input Fields
-const resetDOM = () => {
+const resetDOM = (cancelPress) => {
   updateId = null;
   credits = 0;
-  coursesContainer.innerHTML = '';
   codeInput.value = '';
   nameInput.value = '';
   progressionInput.value = '';
   linkInput.value = '';
   creditsInput.value = '';
   iconInput.value = '';
-  getCourses(coursesUrl);
+  cancelPress ? null : coursesContainer.innerHTML = '';
+  cancelPress ? null : getCourses(coursesUrl);
 }
 
 
@@ -165,7 +165,10 @@ const updateCourse = (id) => {
     .catch(e => console.error(e))
 }
 
-
+const cancelUpdate = (e) => {
+  e.preventDefault();
+  confirmIt('cancel') ? resetDOM(true) : null;
+}
 
 const addCourse = (e) => {
   // e.preventDefault();
@@ -196,12 +199,10 @@ const addCourse = (e) => {
     .catch(e => console.error(e))
 }
 
-
+const confirmIt = (method) => window.confirm(`Sure you want to ${method}?`);
 
 const deleteCourse = id => {
-  const confirm = window.confirm('Are you sure you want to delete course?');
-
-  confirm == true ? fetch(`${coursesUrl}?id=${id}`,
+  confirmIt('delete this...') ? fetch(`${coursesUrl}?id=${id}`,
     {
       method: 'DELETE',
       mode: 'cors',

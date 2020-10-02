@@ -17,8 +17,13 @@
     }
   }
 
+  .contact-form_buttons {
+    @include flex(row, wrap)
+  }
+
   .btn {
     margin-top: 20px;
+    width: 50%;
   }
 
   #submit {
