@@ -3,7 +3,7 @@ const
   coursesContainer = document.querySelector('#courses-container'),
   creditsTotal = document.querySelector('#credits-total_score');
 
-// Form Input Value
+// Form Input Values
 const
   codeInput = document.querySelector('#code'),
   nameInput = document.querySelector('#name'),
@@ -17,12 +17,17 @@ const
 // Used for Total Credits Counter
 let credits = 0;
 
+// Holds ID of course to update
+let updateId;
+
 // Courses URL
 const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
 
 
 
-// Empty Input Fields
+/* Resets Form Input, updateID, and credits
+  * @param   {boolean}     cancelPress     If Call Came From Cancel Button Press
+*/
 const resetDOM = (cancelPress) => {
   updateId = null;
   credits = 0;
@@ -38,9 +43,20 @@ const resetDOM = (cancelPress) => {
 
 
 
+/* "Routes" functionality of Send button
+  * @param   {object}     e       Event object
+  * @param   {number}     [id]    ID of course to update
+*/
+const updateOrAdd = (e, id) => {
+  e.preventDefault()
+  id ? updateCourse(id) : addCourse();
+}
+
+
+
 /* Show User Feedback Div
- * @param   {object}        Uses object.message & object.code
- * @param   {string}        Element ID or class, e.g '.feedback'
+  * @param   {object}      feedback     Uses object.message & object.code
+  * @param   {string}      element      Element ID or class, e.g '.feedback'
 */
 const userFeedback = (feedback, element) => {
   fadeInElement(element, 500);
