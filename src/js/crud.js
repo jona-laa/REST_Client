@@ -1,4 +1,7 @@
-// GET Courses
+/********** GET **********/
+/* Gets all courses with GET request
+  * @param   {string}     url     API-url
+*/
 const getCourses = (url) => {
   fetch(url)
     .then(res => res.json())
@@ -6,7 +9,9 @@ const getCourses = (url) => {
     .catch(e => console.error(e))
 }
 
-// Create Elements with Fetched Data
+/* Creates Div Element for Course Object
+  * @param   {object}     course     Course object -> object.id/code/name/link/progression/credits/icon
+*/
 const createElement = (course) => {
   coursesContainer.innerHTML += `
     <div class="courses-container_course" id="course-${course.id}">
@@ -28,8 +33,9 @@ const createElement = (course) => {
 
 
 
-// CREATES new course
-const addCourse = (e) => {
+/********** POST **********/
+// Adds course with POST request
+const addCourse = () => {
   fetch(coursesUrl,
     {
       method: 'POST',
@@ -62,11 +68,10 @@ const addCourse = (e) => {
 
 
 
-// UPDATE Course
-// Holds ID of course to update
-let updateId;
-
-// Gets and prepares form input values
+/********** UPDATE **********/
+/* Initiates update process - Gets course info and auto-fills input fields
+  * @param   {number}     id    ID of course to update
+*/
 const initUpdate = (id) => {
   updateId = id;
 
@@ -85,13 +90,9 @@ const initUpdate = (id) => {
     })
 }
 
-// Enables functionality on Send button depending on updateId value
-const updateOrAdd = (e, id) => {
-  e.preventDefault()
-  id ? updateCourse(id) : addCourse();
-}
-
-// Sends PUT request
+/* Updates course with PUT request
+  * @param   {number}     id     ID of course to delete
+*/
 const updateCourse = (id) => {
   fetch(coursesUrl,
     {
@@ -119,7 +120,9 @@ const updateCourse = (id) => {
     .catch(e => console.error(e))
 }
 
-// Cancels Update/Send form on user confirm
+/* Cancels/Resets Form
+  * @param   {object}     e     Event Object
+*/
 const cancelUpdate = (e) => {
   e.preventDefault();
   confirmIt('cancel') ? resetDOM(true) : null;
@@ -127,9 +130,12 @@ const cancelUpdate = (e) => {
 
 
 
-// DELETE course
+/********** DELETE **********/
+/* Deletes selected course
+  * @param   {number}     id     ID of course to delete
+*/
 const deleteCourse = id => {
-  confirmIt('delete course...') ? fetch(`${coursesUrl}?id=${id}`,
+  confirmIt('delete course') ? fetch(`${coursesUrl}?id=${id}`,
     {
       method: 'DELETE',
       mode: 'cors',
