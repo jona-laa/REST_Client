@@ -133,12 +133,10 @@ const initUpdate = (id) => {
 
 const updateOrAdd = (e, id) => {
   e.preventDefault()
-  console.log(id)
   id ? updateCourse(id) : addCourse();
 }
 
 const updateCourse = (id) => {
-  console.log('update', id)
   fetch(coursesUrl,
     {
       method: 'PUT',
@@ -171,9 +169,6 @@ const cancelUpdate = (e) => {
 }
 
 const addCourse = (e) => {
-  // e.preventDefault();
-  console.log('add')
-
   fetch(coursesUrl,
     {
       method: 'POST',
@@ -194,8 +189,13 @@ const addCourse = (e) => {
     }
   )
     .then(res => res.json())
-    .then(json => userFeedback(json))
-    .then(data => resetDOM())
+    .then(json => {
+      userFeedback(json)
+      return json;
+    })
+    .then(data => {
+      data.code == 201 ? resetDOM() : null;
+    })
     .catch(e => console.error(e))
 }
 
