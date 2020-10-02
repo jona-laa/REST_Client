@@ -123,7 +123,7 @@ const updateCourse = (id) => {
 /* Cancels/Resets Form
   * @param   {object}     e     Event Object
 */
-const cancelUpdate = (e) => {
+const cancelForm = (e) => {
   e.preventDefault();
   confirmIt('cancel') ? resetDOM(true) : null;
 }
