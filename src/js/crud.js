@@ -90,7 +90,7 @@ const initUpdate = (id) => {
 }
 
 /* Updates course with PUT request
-  * @param   {number}     id     ID of course to delete
+  * @param   {number}     id     ID of course to update
 */
 const updateCourse = (id) => {
   fetch(coursesUrl,

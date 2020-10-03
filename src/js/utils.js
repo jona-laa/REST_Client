@@ -29,7 +29,7 @@ const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
 
 
 /* Resets Form Input, updateID, and credits
-  * @param   {boolean}     cancelPress     If Call Came From Cancel Button Press
+  * @param   {boolean}     cancelPress     If Call Came From Cancel Button Press or Not
 */
 const resetDOM = (cancelPress) => {
   updateId = null;
