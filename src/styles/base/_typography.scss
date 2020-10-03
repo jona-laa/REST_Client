@@ -25,10 +25,17 @@ h2 {
   @include maxWidth(600px) {
     font-size: $font-XXXL;
   }
+  @include maxWidth(335px) {
+    font-size: $font-XXL;
+    font-weight: 400;
+  }
 }
 
 h3 {
   font-size: $font-L;
+  @include maxWidth(335px) {
+    font-size: $font-M;
+  }
 }
 
 /* Section Header */

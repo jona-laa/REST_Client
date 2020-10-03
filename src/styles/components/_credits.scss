@@ -6,6 +6,9 @@
 
     span {
       font-size: $font-XXL;
+      @include maxWidth(335px) {
+        font-size: $font-M;
+      }
     }
   }
 }
