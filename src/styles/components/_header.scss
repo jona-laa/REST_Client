@@ -26,14 +26,6 @@
     margin: 0 5px;
     text-decoration: none;
 
-    &:visited {
-      color: $color-light;
-    }
-
-    &:hover {
-      opacity: 0.75;
-    }
-
     @include maxWidth(550px) {
       font-size: $font-M;
     }

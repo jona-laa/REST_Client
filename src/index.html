@@ -38,13 +38,12 @@
       </div> <!-- courses-container end -->
 
       <!-- Total Credits -->
-      <div class="col-1 credits section-padding">
+      <div class="credits section-padding">
         <div class="section-header">
           <h2>Total Credits</h2>
         </div>
         <div class="credits-total">
-          <span id="credits-total_score"></span>
-          <!-- Total Credits Generated On Window Load -->
+          <span id="credits-total_score"><!-- Total Credits Generated On Window Load --></span>
         </div>
       </div>
     </section> <!-- courses end-->
@@ -53,12 +52,12 @@
 
 
     <section id="add-course section-padding">
-      <div class="col">
-        <div class="col-2 bg-light">
+      <div>
+        <div>
           <div class="section-header">
             <h2>Add Course</h2>
           </div>
-          <form class="contact-form">
+          <form>
             <div>
               <label for="code"></label>
               <input type="text" name="code" id="code" placeholder="Enter Code                 (e.g: DT173G)" required>
@@ -88,20 +87,20 @@
             <div class="feedback">
               <span id="feedback-message"></span>
             </div>
-            <div class="contact-form_buttons">
+            <div class="form_buttons">
               <input type="submit" value="Send" id="submit" class="btn" onclick="updateOrAdd(event, updateId)">
               <input type="submit" value="Cancel" id="submit" class="btn" onclick="cancelForm(event)">
             </div>
           </form>
         </div>
-      </div> <!-- col end -->
+      </div>
 
 
     </section>
 
   </main>
 
-  <footer class="bg-dark">
+  <footer>
     <div class="social">
       <a href="https://github.com/jona-laa/" target="_blank"><i class="fab fa-github fa-2x"></i></a>
       <a href="https://www.linkedin.com/in/jonathan-laasonen-974aa617a/" target="_blank"><i
@@ -109,6 +108,14 @@
     </div>
     <small>&copy; 2020 Jona.Laa.Dev </small>
 
+    <!-- To Top Button -->
+    <button id="goTop" class="btn-top" onclick="toTop()">
+      <svg class="arrow up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="5 0 50 80" xml:space="preserve">
+        <polyline fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" points="
+    		        0.375, 35.375 28.375, 0.375 58.67, 35.375 " />
+      </svg>
+    </button>
   </footer>
   <script src="//code.jquery.com/jquery-latest.js"></script>
   <script src="./js/main.js"></script>

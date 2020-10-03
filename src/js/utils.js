@@ -14,6 +14,9 @@ const
   feedbackMessage = document.querySelector('#feedback-message'),
   feedbackDiv = document.querySelector('.feedback');
 
+// To Top Button
+const toTopBtn = document.querySelector('#goTop');
+
 // Used for Total Credits Counter
 let credits = 0;
 
@@ -123,4 +126,33 @@ const confirmIt = (action) => window.confirm(`Sure you want to ${action}?`);
 
 
 
+// Make "Back To Top"-button scroll to the top
+const toTop = () => {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // Chrome, Firefox, IE and Opera
+}
+
+
+
+// Hide "to top button"
+const hideToTopBtn = () => {
+  window.pageYOffset > window.screen.height ?
+    elementHide(toTopBtn, 'bottom', '20px')
+    :
+    elementHide(toTopBtn, 'bottom', '-50px')
+}
+
+
+
+/* Toggle element from top or bottom
+  * @param   {DOM element}   element     Target DOM element to toggle
+  * @param   {string}        position    'top' or 'bottom'
+  * @param   {string}        offset      Offset in e.g. pixels, rem, em, etc.
+*/
+const elementHide = (element, position, offset) => position === 'top' ? element.style.top = offset : element.style.bottom = offset;
+
+
+
+// Hide to top on scroll & Load Courses on Page Load
+window.onscroll = () => hideToTopBtn();
 window.addEventListener("load", getCourses(coursesUrl));
