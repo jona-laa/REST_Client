@@ -21,34 +21,41 @@
     border: none;
     display: block;
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 20px;
-    padding: 6px 7px 2px 7px;
+    padding: 6px 5px 2px 5px;
+    @include maxWidth(350px) {
+      right: 5px;
+    }
   }
 
   .delete,
   .update {
     display: none;
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 45px;
-    padding: 6px 7px 2px 7px;
+    padding: 6px 9px 1px 9px;
     background-color: red;
     border: none;
     color: $color-light;
     transition: 2s ease-in;
-
+    @include maxWidth(350px) {
+      right: 30px;
+    }
   }
 
   .update {
     display: none;
-    right: 75px;
-    padding: 6px 5px 2px 7px;
+    right: 78.5px;
+    padding: 6px 7px 1px 9px;
     background-color: rgb(0, 174, 255);
+    @include maxWidth(350px) {
+      right: 63.5px;
+    }
   }
 
   span {
     font-size: $font-S;
   }
 }
-
