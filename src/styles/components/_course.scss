@@ -23,7 +23,7 @@
     position: absolute;
     top: 10px;
     right: 20px;
-    padding: 6px 5px 2px 5px;
+    padding: 6px 2px 2px;
     @include maxWidth(350px) {
       right: 5px;
     }
@@ -34,24 +34,24 @@
     display: none;
     position: absolute;
     top: 10px;
-    right: 45px;
+    right: 37.5px;
     padding: 6px 9px 1px 9px;
     background-color: red;
     border: none;
     color: $color-light;
     transition: 2s ease-in;
     @include maxWidth(350px) {
-      right: 30px;
+      right: 22.5px;
     }
   }
 
   .update {
     display: none;
-    right: 78.5px;
+    right: 70px;
     padding: 6px 7px 1px 9px;
     background-color: rgb(0, 174, 255);
     @include maxWidth(350px) {
-      right: 63.5px;
+      right: 55px;
     }
   }
 
