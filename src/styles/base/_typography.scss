@@ -33,6 +33,9 @@ h2 {
 
 h3 {
   font-size: $font-L;
+  @include maxWidth(335px) {
+    font-size: $font-M;
+  }
 }
 
 /* Section Header */
