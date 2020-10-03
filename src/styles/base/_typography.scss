@@ -1,4 +1,4 @@
-main a {
+a {
   text-decoration: none;
   color: $color-dark;
 
@@ -22,24 +22,17 @@ h2 {
   font-weight: 300;
   line-height: 4.2rem;
   font-size: $font-h2;
+  @include maxWidth(600px) {
+    font-size: $font-XXXL;
+  }
 }
 
 h3 {
   font-size: $font-L;
 }
 
-p {
-  margin: 10px 0;
-  font-size: $font-M;
-}
-
-/* Small text above the section heading */
-.pre-header {
-  font-size: $font-S;
-}
-
 /* Section Header */
 .section-header {
-  padding: $padding-div;
+  padding: 20px 20px 10px;
   text-align: center;
 }

@@ -1,26 +1,24 @@
 /* Footer */
 footer {
   @include flex();
+  @include light-theme(false);
   justify-content: space-around;
   min-height: 160px;
   padding: $padding-div;
   text-align: center;
 
+  /* Social Icons */
   a {
-    font-size: $font-M;
-
-    &:hover {
-      opacity: 0.75;
-    }
+    font-size: $font-L;
   }
 
-  small {
-    font-size: $font-XS;
-  }
-
-  /* Social media icons */
   .social i {
     color: $color-light;
     margin: 5px;
+  }
+
+  /* © */
+  small {
+    font-size: $font-XS;
   }
 }

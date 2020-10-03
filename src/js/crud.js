@@ -79,7 +79,6 @@ const initUpdate = (id) => {
     .then(res => res.json())
     .then(data => {
       let { id, code, name, progression, link, credits, icon } = data.courses[0];
-      console.log(id)
       codeInput.value = code;
       nameInput.value = name;
       progressionInput.value = progression;
@@ -123,7 +122,7 @@ const updateCourse = (id) => {
 /* Cancels/Resets Form
   * @param   {object}     e     Event Object
 */
-const cancelUpdate = (e) => {
+const cancelForm = (e) => {
   e.preventDefault();
   confirmIt('cancel') ? resetDOM(true) : null;
 }

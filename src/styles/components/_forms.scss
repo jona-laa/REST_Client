@@ -1,8 +1,8 @@
 /* callback form */
-.contact-form {
+form {
   margin: auto;
   max-width: 600px;
-  padding: 20px;
+  padding: 10px 20px;
   width: 100%;
 
   input {
@@ -17,16 +17,10 @@
     }
   }
 
-  .contact-form_buttons {
+  .form_buttons {
     margin-top: 10px;
-    @include flex(row);
-
-    .btn {
-      width: 100%;
-    }
+    @include flex(row-reverse);
   }
-
-
 
   #submit {
     @include light-theme(false);
