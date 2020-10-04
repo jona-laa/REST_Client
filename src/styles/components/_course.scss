@@ -1,6 +1,10 @@
 .courses-container_course {
   position: relative;
 
+  &:hover > button:last-child {
+    display: block;
+  }
+
   i {
     margin-bottom: 10px;
   }
@@ -19,7 +23,7 @@
   .edit {
     background-color: transparent;
     border: none;
-    display: block;
+    display: none;
     position: absolute;
     top: 10px;
     right: 20px;
