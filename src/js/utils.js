@@ -46,13 +46,12 @@ const resetDOM = (cancelPress) => {
 
 
 
-/* "Routes" functionality of Send button
-  * @param   {object}     e       Event object
-  * @param   {number}     [id]    ID of course to update
+/* Counts and Prints Credits Score
+  * @param   {string}      credit     Course Credits, e.g 7.5
 */
-const updateOrAdd = (e, id) => {
-  e.preventDefault()
-  id ? updateCourse(id) : addCourse();
+const countCredits = (credit) => {
+  credits += parseFloat(credit)
+  creditsTotal.innerHTML = `${credits} HP`;
 }
 
 

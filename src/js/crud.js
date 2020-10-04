@@ -37,16 +37,6 @@ const createElement = (course) => {
 
 
 
-/* Counts and Prints Credits Score
-  * @param   {string}      credit     Course Credits, e.g 7.5
-*/
-const countCredits = (credit) => {
-  credits += parseFloat(credit)
-  creditsTotal.innerHTML = `${credits} HP`;
-}
-
-
-
 /********** POST **********/
 // Adds course with POST request
 const addCourse = () => {
@@ -78,6 +68,17 @@ const addCourse = () => {
       data.code == 201 ? resetDOM() : null;
     })
     .catch(e => console.error(e))
+}
+
+
+
+/* "Routes" functionality of Send button
+  * @param   {object}     e       Event object
+  * @param   {number}     [id]    ID of course to update
+*/
+const updateOrAdd = (e, id) => {
+  e.preventDefault()
+  id ? updateCourse(id) : addCourse();
 }
 
 
