@@ -5,12 +5,15 @@
 const getCourses = (url) => {
   fetch(url)
     .then(res => res.json())
-    .then(data => data.courses.forEach(course => createElement(course)))
+    .then(data => data.courses.forEach(course => {
+      createElement(course)
+      countCredits(course.credits);
+    }))
     .catch(e => console.error(e))
 }
 
 /* Creates Div Element for Course Object
-  * @param   {object}     course     Course object -> object.id/code/name/link/progression/credits/icon
+  * @param   {object}     course     course.id/code/name/link/progression/credits/icon
 */
 const createElement = (course) => {
   coursesContainer.innerHTML += `
@@ -27,7 +30,18 @@ const createElement = (course) => {
       <button class="btn edit" value="update" onclick="toggleElement(50, '#delete-${course.id}','#update-${course.id}')"><i class="fas fa-ellipsis-v fa-1x"></i></button>
     </div>
   `;
-  credits += parseFloat(course.credits)
+
+  // Hide Delete and Update Buttons on Mouseleave
+  document.querySelectorAll('.courses-container_course').forEach(e => e.addEventListener("mouseleave", () => fadeOutElement(0, 0, `.delete`, `.update`)))
+}
+
+
+
+/* Counts and Prints Credits Score
+  * @param   {string}      credit     Course Credits, e.g 7.5
+*/
+const countCredits = (credit) => {
+  credits += parseFloat(credit)
   creditsTotal.innerHTML = `${credits} HP`;
 }
 
