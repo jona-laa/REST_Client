@@ -68,7 +68,7 @@ const userFeedback = (feedback, element) => {
   feedbackMessage.textContent = feedback.message;
   status == 201 | status == 200 ? feedbackDiv.style.backgroundColor = 'green' : feedbackDiv.style.backgroundColor = 'red';
 
-  fadeOutElement(element, 1000, 4000);
+  fadeOutElement(1000, 4000, element);
 }
 
 
@@ -82,8 +82,8 @@ $('.feedback').click(function () {
 
 
 /* Fade in Element
- * @param   {string}        element     Element ID or class, e.g '.feedback'
- * @param   {number}        fadeMs      Fade speed in milliseconds
+  * @param   {string}        element     Element ID or class, e.g '.feedback'
+  * @param   {number}        fadeMs      Fade speed in milliseconds
 */
 const fadeInElement = (element, fadeMs) => {
   $(element).fadeIn(fadeMs, function () {
@@ -93,22 +93,24 @@ const fadeInElement = (element, fadeMs) => {
 
 
 /* Fade out Element
- * @param   {string}        element     Element ID or class, e.g '.feedback'
- * @param   {number}        fadeMs      Fade speed in milliseconds
- * @param   {number}        timeoutMS   Timeout in milliseconds
+  * @param   {number}           fadeMs      Fade speed in milliseconds
+  * @param   {number}           timeoutMS   Timeout in milliseconds
+  * @param   {Array<string>}    elements    Element ID/Class, e.g '.feedback'
 */
-const fadeOutElement = (element, fadeMs, timeoutMs) => {
-  setTimeout(() => {
-    $(element).fadeOut(fadeMs, function () {
-    })
-  }, timeoutMs);
+const fadeOutElement = (fadeMs, timeoutMs, ...elements) => {
+  elements.forEach(e => {
+    setTimeout(() => {
+      $(e).fadeOut(fadeMs, function () {
+      })
+    }, timeoutMs);
+  })
 }
 
 
 
 /* Toggles Element
-* @param   {number}         fadeMs       Fade speed in milliseconds
-* @param   {Array<string>}  elements     Element ID or class, e.g '.feedback'
+  * @param   {number}         fadeMs       Fade speed in milliseconds
+  * @param   {Array<string>}  elements     Element ID/Class, e.g '.feedback'
 */
 const toggleElement = (fadeMs, ...elements) => {
   elements.forEach(e => {
@@ -120,7 +122,7 @@ const toggleElement = (fadeMs, ...elements) => {
 
 
 /* Confirm Pop-Up
- * @param   {string}          action    E.g 'proceed' -> 'Sure you want to proceed?'
+  * @param   {string}          action    E.g 'proceed' -> 'Sure you want to proceed?'
 */
 const confirmIt = (action) => window.confirm(`Sure you want to ${action}?`);
 
