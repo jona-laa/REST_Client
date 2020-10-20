@@ -163,6 +163,11 @@ const deleteCourse = id => {
       headers: {
         'Content-Type': 'application/json'
       },
+      body: JSON.stringify(
+        {
+          token: authToken
+        }
+      )
     }
   )
     .then(res => res.json())
