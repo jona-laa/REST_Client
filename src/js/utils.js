@@ -23,8 +23,12 @@ let credits = 0;
 // Holds ID of course to update
 let updateId;
 
+// Authtoken
+let authToken;
+
 // Courses URL
 const coursesUrl = 'http://localhost:8080/DEMO_REST/api/courses';
+// const coursesUrl = 'http://studenter.miun.se/~jola1803/dt173g/moment5/Server/courses.php';
 
 
 
