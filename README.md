@@ -13,6 +13,4 @@
 * **Update Course**
   * Press the options icon (three vertical dots), and click on the edit icon. Confirm.
 
-Live webbapp can be found at [DT173G - Moment 5](http://studenter.miun.se/~jola1803/dt173g/moment5/Client/)
-
 :v: :heart:
